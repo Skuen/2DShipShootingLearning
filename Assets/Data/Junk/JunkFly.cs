@@ -7,6 +7,6 @@ public class JunkFly : ParentFly
     protected override void ResetValue()
     {
         base.ResetValue();
-        this.moveSpeed = 0.5f;
+        this.moveSpeed = 1.5f;
     }
 }
