@@ -12,7 +12,7 @@ public class BulletSpawner : Spawner
         base.Awake();
         if (BulletSpawner.Instance != null && Instance != this)
         {
-            Debug.LogError("Only 1 Spawner allow!!");
+            Debug.LogError("Only 1 Bullet Spawner allow!!");
             Destroy(this);
             return;
         }
