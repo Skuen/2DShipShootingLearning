@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InputManager : MonoBehaviour
+public class InputManager : AlphaMonoBehavior
 {
     public static InputManager Instance { get; private set; }
 
@@ -12,8 +12,9 @@ public class InputManager : MonoBehaviour
     /// <summary>
     /// main part
     /// </summary>
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         if (Instance != null && Instance != this)
         {
             Debug.LogError("Only 1 InputManager allow!!");

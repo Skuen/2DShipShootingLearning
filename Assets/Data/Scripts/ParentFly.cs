@@ -10,4 +10,8 @@ public class ParentFly : AlphaMonoBehavior
     {
         transform.parent.Translate(this.direction * this.moveSpeed * Time.deltaTime);
     }
+    protected virtual void OnEnable()
+    {
+        //for override
+    }
 }

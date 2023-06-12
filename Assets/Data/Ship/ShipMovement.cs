@@ -16,7 +16,8 @@ public class ShipMovement : MonoBehaviour
 
     private void LookAtTarget()
     {
-        Vector3 different = this.targetPosition - transform.parent.position;
+        //direction = different between 2 vector3
+        Vector3 different = this.targetPosition - transform.parent.position;//could be called direction
         different.Normalize();
         float rotation_z = Mathf.Atan2(different.y, different.x) * Mathf.Rad2Deg;
 

@@ -29,7 +29,7 @@ public class JunkController : AlphaMonoBehavior
     protected virtual void LoadSpawnPoints()
     {
         if (this.spawnPoints != null) return;
-        this.spawnPoints = GetComponent<JunkSpawnPoints>();
+        this.spawnPoints = FindObjectOfType<JunkSpawnPoints>();
         Debug.Log(transform.name + ": LoadSpawnPoints", gameObject);
     }
 }
