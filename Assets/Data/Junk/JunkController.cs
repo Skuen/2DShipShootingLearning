@@ -5,31 +5,19 @@ using UnityEngine;
 
 public class JunkController : AlphaMonoBehavior
 {
-    /// <summary>
-    /// Only use for load Component and dependencies
-    /// </summary>
-    [SerializeField] protected JunkSpawner junkSpawner;
-    [SerializeField] protected JunkSpawnPoints spawnPoints;
-    public JunkSpawner JunkSpawner { get => junkSpawner;  }
-    public JunkSpawnPoints SpawnPoints { get => spawnPoints; }
-
+    [SerializeField] protected Transform model;
+    public Transform Model { get => model; }
     protected override void LoadComponent()
     {
         base.LoadComponent();
-        this.LoadJunkSpawner();
-        this.LoadSpawnPoints();
+        this.LoadModel();
     }
 
-    protected virtual void LoadJunkSpawner()
+    protected virtual void LoadModel()
     {
-        if (this.junkSpawner != null) return;
-        this.junkSpawner = GetComponent<JunkSpawner>();
-        Debug.Log(transform.name + ": LoadJunkSpawner", gameObject);
-    }
-    protected virtual void LoadSpawnPoints()
-    {
-        if (this.spawnPoints != null) return;
-        this.spawnPoints = FindObjectOfType<JunkSpawnPoints>();
-        Debug.Log(transform.name + ": LoadSpawnPoints", gameObject);
+        if (this.model != null) return;
+        this.model = transform.Find("Model");
+        Debug.Log(transform.name + ": LoadModel", gameObject);
+
     }
 }

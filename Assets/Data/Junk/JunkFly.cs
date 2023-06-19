@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class JunkFly : ParentFly
 {
-    [SerializeField] protected float min_Deviation = -7f;
-    [SerializeField] protected float max_Deviation = -7f;
+    [SerializeField] protected float min_Deviation = -5f;
+    [SerializeField] protected float max_Deviation = -5f;
     protected override void ResetValue()
     {
         base.ResetValue();

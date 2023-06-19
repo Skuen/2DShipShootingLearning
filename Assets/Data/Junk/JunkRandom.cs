@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class JunkRandom : AlphaMonoBehavior
 {
-    [SerializeField] protected JunkController junkController;
+    [SerializeField] protected JunkSpawnerController junkController;
     #region init
     protected override void LoadComponent()
     {
@@ -16,7 +16,7 @@ public class JunkRandom : AlphaMonoBehavior
     protected virtual void LoadJunkController()
     {
         if (this.junkController != null) return;
-        this.junkController = GetComponent<JunkController>();
+        this.junkController = GetComponent<JunkSpawnerController>();
         Debug.Log(transform.name + ": LoadJunkController", gameObject);
     }
     #endregion
