@@ -5,7 +5,13 @@ using UnityEngine;
 
 public abstract class Spawner : AlphaMonoBehavior
 {
+    [Header("Spawner")]
     [SerializeField] protected Transform holder; 
+    
+    [SerializeField] protected int spawnedCount=0;
+
+    public int SpawnedCount => spawnedCount;
+
     [SerializeField] protected List<Transform> prefabs;
     [SerializeField] protected List<Transform> poolObjs; 
     #region main
@@ -61,6 +67,7 @@ public abstract class Spawner : AlphaMonoBehavior
         newPrefab.SetPositionAndRotation(spawnPosition, rotation);
 
         newPrefab.parent = this.holder;
+        this.spawnedCount++;
         return newPrefab;
     }
     protected virtual Transform GetObjectFromPool(Transform prefab)
@@ -90,5 +97,6 @@ public abstract class Spawner : AlphaMonoBehavior
     {
         this.poolObjs.Add(obj);
         obj.gameObject.SetActive(false);
+        this.spawnedCount--;
     }
 }
