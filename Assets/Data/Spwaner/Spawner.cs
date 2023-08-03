@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -62,11 +61,16 @@ public abstract class Spawner : AlphaMonoBehavior
             Debug.LogWarning("Prefab not found: " + prefabName); 
             return null;
         }
-
+        
+        return Spawn(prefab,spawnPosition,rotation);
+    }
+    public virtual Transform Spawn(Transform prefab, Vector3 spawnPosition, Quaternion rotation)
+    {
         Transform newPrefab = this.GetObjectFromPool(prefab);
         newPrefab.SetPositionAndRotation(spawnPosition, rotation);
 
         newPrefab.parent = this.holder;
+
         this.spawnedCount++;
         return newPrefab;
     }
@@ -95,8 +99,15 @@ public abstract class Spawner : AlphaMonoBehavior
     }
     public virtual void Despawn(Transform obj)
     {
+        if (this.poolObjs.Contains(obj)) return;
+
         this.poolObjs.Add(obj);
         obj.gameObject.SetActive(false);
         this.spawnedCount--;
+    }
+    public virtual Transform RandomPrefab()
+    {
+        int rand = Random.Range(0, this.prefabs.Count);
+        return this.prefabs[rand];
     }
 }

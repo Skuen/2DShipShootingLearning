@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +5,7 @@ using UnityEngine;
 public class ShipMovement : MonoBehaviour
 {
     [SerializeField] protected Vector3 targetPosition;
-    [SerializeField] protected float shipSpeed = 0.1f;
+    [SerializeField] protected float shipSpeed = 0.05f;
     private void FixedUpdate()
     {
         this.GetTargetPosition();

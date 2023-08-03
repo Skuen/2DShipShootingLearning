@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,7 +25,7 @@ public abstract class Despawn : AlphaMonoBehavior
         this.DespawnObject();
 
     }
-    protected virtual void DespawnObject()
+    public virtual void DespawnObject()
     {
         Destroy(transform.parent.gameObject);
     }

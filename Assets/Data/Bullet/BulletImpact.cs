@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -38,5 +37,6 @@ public class BulletImpact : BulletAbtract
     protected virtual void OnTriggerEnter(Collider other)
     {
         this.bulletController.DamageSender.Send(other.transform);
+        Debug.Log("Collided");
     }
 }

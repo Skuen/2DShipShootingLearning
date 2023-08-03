@@ -1,14 +1,12 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DamageSender : MonoBehaviour
+public class DamageSender : AlphaMonoBehavior
 {
-    [SerializeField] protected float damage = 1;
+    [SerializeField] protected int damage = 1;
     public virtual void Send(Transform obj)
     {
-
         DamageReceiver damageReceiver = obj.GetComponentInChildren<DamageReceiver>();
         if (damageReceiver == null) return;
         this.Send(damageReceiver);
@@ -16,11 +14,8 @@ public class DamageSender : MonoBehaviour
     public virtual void Send(DamageReceiver damageReceiver)
     {
         damageReceiver.Deduct(this.damage);
-        this.DestroyObject();
+        Debug.Log("Deducted");
     }
 
-    protected virtual void DestroyObject()
-    {
-        Destroy(transform.parent.gameObject);
-    }
+    
 }

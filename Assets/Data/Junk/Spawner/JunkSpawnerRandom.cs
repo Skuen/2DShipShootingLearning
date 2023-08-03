@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,7 +15,7 @@ public class JunkSpawnerRandom : AlphaMonoBehavior
         base.LoadComponent();
         this.LoadJunkController();
     }
-
+    //Load dependency
     protected virtual void LoadJunkController()
     {
         if (this.junkSpawnerController != null) return;
@@ -24,7 +23,8 @@ public class JunkSpawnerRandom : AlphaMonoBehavior
         Debug.Log(transform.name + ": LoadJunkController", gameObject);
     }
     #endregion
-    protected override void Start()
+   
+    protected virtual void FixedUpdate()
     {
         this.JunkSpawning();
     }
@@ -40,9 +40,11 @@ public class JunkSpawnerRandom : AlphaMonoBehavior
         Transform randomePoint = this.junkSpawnerController.SpawnPoints.GetRandom();
         Vector3 position = randomePoint.position;
         Quaternion rotation = transform.rotation;
-        Transform obj =  this.junkSpawnerController.JunkSpawner.Spawn(JunkSpawner.meteoriteOne, position, rotation);
+
+
+        Transform prefab = this.junkSpawnerController.JunkSpawner.RandomPrefab();
+        Transform obj =  this.junkSpawnerController.JunkSpawner.Spawn(prefab, position, rotation);
         obj.gameObject.SetActive(true);
-        Invoke(nameof(this.JunkSpawning), 1f);
     }
     protected virtual bool RandomReachLimit()
     {
