@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class DespawnByTime : Despawn
 {
-    [SerializeField] protected float delay = 2f;
+    [SerializeField] protected float timeLimit = 2f;
     [SerializeField] protected float timer = 0;
     protected override void OnEnable()
     {
@@ -21,7 +21,7 @@ public class DespawnByTime : Despawn
     protected override bool IsDespawnable()
     {
         this.timer += Time.fixedDeltaTime;
-        if (this.timer <= this.delay) return false;
+        if (this.timer <= this.timeLimit) return false;
         return true;
     }
 }

@@ -21,8 +21,13 @@ public class JunkDamageReceiver : DamageReceiver
     protected override void OnDead()
     {
         this.OnDeadFX();
+        this.DropItemOnDead();
         this.junkController.JunkDespawn.DespawnObject();
         Debug.Log("Junk destroyed");
+    }
+    protected virtual void DropItemOnDead()
+    {
+        ItemDropSpawner.Instance.Drop(this.junkController.JunkSO.dropList, transform.position, transform.rotation);
     }
     public override void Reborn()
     {
