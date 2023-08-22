@@ -36,25 +36,10 @@ public class BulletImpact : BulletAbtract
     }
     protected virtual void OnTriggerEnter(Collider other)
     {
-        //Debug.Log(other.transform.parent.name);
-        //Debug.Log(transform.parent.name);
-
         if (other.transform.parent == this.bulletController.Shooter) return;
+
         this.bulletController.DamageSender.Send(other.transform);
-        this.CreateImpactFX(other);
         Debug.Log("Collided");
     }
-    protected virtual void CreateImpactFX(Collider collider)
-    {
-        string fxName= this.getImpactFXName();
-
-        Vector3 hitPosition = transform.position;
-        Quaternion hitRoation = transform.rotation;
-        Transform fxImpact =FXSpawner.Instance.Spawn(fxName, hitPosition, hitRoation);
-        fxImpact.gameObject.SetActive(true);
-    }
-    protected virtual string getImpactFXName()
-    {
-        return FXSpawner.impact1;
-    }
+    
 }

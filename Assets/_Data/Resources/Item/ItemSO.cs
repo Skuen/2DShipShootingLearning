@@ -5,13 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Item", menuName = "ScriptableObjects/Item")]
 public class ItemSO : ScriptableObject
 {
-    public ItemCode itemCode = ItemCode.NoItem; 
+    public ItemCode itemCode = ItemCode.None; 
     public string itemName = "Item";
 
-    public enum ItemCode
-    {
-        NoItem =0,
-        IronOre =1,
-        GoldOre =2
-    }
 }
