@@ -11,7 +11,7 @@ public class AlphaMonoBehavior : MonoBehaviour
     // Start is called before the first frame update
     protected virtual void Reset()
     {
-        this.LoadComponent();
+        this.LoadComponents();
         this.ResetValue();
     }
 
@@ -25,7 +25,7 @@ public class AlphaMonoBehavior : MonoBehaviour
         //For override
 
     }
-    protected virtual void LoadComponent()
+    protected virtual void LoadComponents()
     {
         //For override
     }

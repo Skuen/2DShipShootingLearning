@@ -9,7 +9,7 @@ public class DespawnByDistance : Despawn
     [SerializeField] protected Transform mainCamera;
     //main
     
-    protected override void LoadComponent()
+    protected override void LoadComponents()
     {
         this.LoadCamera();
     }

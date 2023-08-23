@@ -10,9 +10,9 @@ public class BulletImpact : BulletAbtract
     [SerializeField] protected SphereCollider sphereCollider;
     [SerializeField] protected Rigidbody _rigidbody;
 
-    protected override void LoadComponent()
+    protected override void LoadComponents()
     {
-        base.LoadComponent();
+        base.LoadComponents();
         this.LoadCollider();
         this.LoadRigidbody();
     }

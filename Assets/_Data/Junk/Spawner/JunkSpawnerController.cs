@@ -12,9 +12,9 @@ public class JunkSpawnerController : AlphaMonoBehavior
     public JunkSpawner JunkSpawner { get => junkSpawner;  }
     public JunkSpawnPoints SpawnPoints { get => spawnPoints; }
 
-    protected override void LoadComponent()
+    protected override void LoadComponents()
     {
-        base.LoadComponent();
+        base.LoadComponents();
         this.LoadJunkSpawner();
         this.LoadSpawnPoints();
     }

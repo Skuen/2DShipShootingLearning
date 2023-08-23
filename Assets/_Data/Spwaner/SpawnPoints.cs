@@ -4,9 +4,9 @@ using UnityEngine;
 public abstract class SpawnPoints : AlphaMonoBehavior
 {
     [SerializeField] protected List<Transform> points;
-    protected override void LoadComponent()
+    protected override void LoadComponents()
     {
-        base.LoadComponent();
+        base.LoadComponents();
         this.LoadPoints();
     }
 

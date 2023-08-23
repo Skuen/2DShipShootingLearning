@@ -8,9 +8,9 @@ public class ItemLooter : AlphaMonoBehavior
     [SerializeField] protected Inventory inventory;
     [SerializeField] protected SphereCollider _collider;
     [SerializeField] protected Rigidbody _rigidbody;
-    protected override void LoadComponent()
+    protected override void LoadComponents()
     {
-        base.LoadComponent();
+        base.LoadComponents();
         this.LoadInventory();
         this.LoadCollider();
         this.LoadRigidbody();
@@ -45,7 +45,7 @@ public class ItemLooter : AlphaMonoBehavior
         ItemCode itemCode = itemPickupable.GetItemCode();
         if(this.inventory.AddItem(itemCode,1))
         {
-            itemPickupable.JunkController.JunkDespawn.DespawnObject();
+            itemPickupable.DespawnItem();
         }
     }
 }

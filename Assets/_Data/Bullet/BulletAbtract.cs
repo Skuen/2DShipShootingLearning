@@ -7,9 +7,9 @@ public abstract class BulletAbtract : AlphaMonoBehavior
     [Header("Bullet Abtract")]
     [SerializeField] protected BulletController bulletController;
     public BulletController BulletController { get => bulletController; }
-    protected override void LoadComponent()
+    protected override void LoadComponents()
     {
-        base.LoadComponent();
+        base.LoadComponents();
         this.LoadDamageReceiver();
     }
 

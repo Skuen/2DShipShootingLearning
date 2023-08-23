@@ -13,9 +13,9 @@ public class BulletController : AlphaMonoBehavior
     public BulletDespawn BulletDespawn { get => bulletDespawn; }
     [SerializeField] protected Transform shooter;
     public Transform Shooter => shooter;
-    protected override void LoadComponent()
+    protected override void LoadComponents()
     {
-        base.LoadComponent();
+        base.LoadComponents();
         this.LoadDamageSender();
         this.LoadBulletDespawn();
     }

@@ -21,9 +21,9 @@ public abstract class DamageReceiver : AlphaMonoBehavior
         base.ResetValue();
         this.Reborn();
     }
-    protected override void LoadComponent()
+    protected override void LoadComponents()
     {
-        base.LoadComponent();
+        base.LoadComponents();
         this.LoadCollider();
     }
 

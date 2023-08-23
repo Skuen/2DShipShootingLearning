@@ -4,11 +4,12 @@ using UnityEngine;
 
 public abstract class JunkAbstract : AlphaMonoBehavior
 {
+    [Header("Junk Abstract")]
     [SerializeField] protected JunkController junkController;
     public JunkController JunkController { get => junkController; }
-    protected override void LoadComponent()
+    protected override void LoadComponents()
     {
-        base.LoadComponent();
+        base.LoadComponents();
         this.LoadModel();
     }
 

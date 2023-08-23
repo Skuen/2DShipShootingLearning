@@ -14,7 +14,7 @@ public abstract class Spawner : AlphaMonoBehavior
     [SerializeField] protected List<Transform> prefabs;
     [SerializeField] protected List<Transform> poolObjs; 
     #region main
-    protected override void LoadComponent()
+    protected override void LoadComponents()
     {
         this.LoadPrefabs();
         this.LoadHolder();

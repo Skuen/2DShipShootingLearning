@@ -5,9 +5,9 @@ using UnityEngine;
 public class BulletDamageSender : DamageSender
 {
     [SerializeField] protected BulletController bulletController;
-    protected override void LoadComponent()
+    protected override void LoadComponents()
     {
-        base.LoadComponent();
+        base.LoadComponents();
         this.LoadBulletController();
     }
 

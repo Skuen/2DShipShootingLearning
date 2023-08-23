@@ -6,9 +6,9 @@ public class JunkDamageReceiver : DamageReceiver
 {
     [Header("Junk")]
     [SerializeField] protected JunkController junkController;
-    protected override void LoadComponent()
+    protected override void LoadComponents()
     {
-        base.LoadComponent();
+        base.LoadComponents();
         this.LoadJunkController();
     }
 

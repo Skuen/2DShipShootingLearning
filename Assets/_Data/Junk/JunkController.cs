@@ -11,9 +11,9 @@ public class JunkController : AlphaMonoBehavior
     public JunkDespawn JunkDespawn { get => junkDespawn; }
     [SerializeField] protected JunkSO junkSO;
     public JunkSO JunkSO => junkSO; 
-    protected override void LoadComponent()
+    protected override void LoadComponents()
     {
-        base.LoadComponent();
+        base.LoadComponents();
         this.LoadModel();
         this.LoadJunkDespawn();
         this.LoadJunkSO();

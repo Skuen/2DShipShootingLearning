@@ -10,9 +10,9 @@ public class JunkSpawnerRandom : AlphaMonoBehavior
     [SerializeField] protected float randomLimit=9f;
 
     #region init
-    protected override void LoadComponent()
+    protected override void LoadComponents()
     {
-        base.LoadComponent();
+        base.LoadComponents();
         this.LoadJunkController();
     }
     //Load dependency
