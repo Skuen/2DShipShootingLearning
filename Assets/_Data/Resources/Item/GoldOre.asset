@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: GoldOre
   m_EditorClassIdentifier: 
   itemCode: 2
-  itemType: 0
+  itemType: 1
   itemName: Gold Ore
   defaultMaxStack: 7

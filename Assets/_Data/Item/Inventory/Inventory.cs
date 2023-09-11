@@ -54,6 +54,48 @@ public class Inventory : AlphaMonoBehavior
         return true;
     }
 
+    public virtual void DeductItem(ItemCode itemCode, int deductCount)
+    {
+        ItemInventory itemInventory;
+        int deduct;
+        for(int i =this.items.Count - 1; i>=0;i--)
+        {
+            if (deductCount <= 0) break;
+            itemInventory = this.items[i];
+            if (itemInventory.itemProfile.itemCode != itemCode) continue;
+
+            if(deductCount>itemInventory.itemCount)
+            {
+                deduct = itemInventory.itemCount;
+                deductCount -= itemInventory.itemCount;
+            }
+            else
+            {
+                deduct = deductCount;
+                deductCount = 0;
+            }
+
+            itemInventory.itemCount -= deduct;
+        }
+    }
+
+    public virtual bool ItemCheck(ItemCode itemCode, int numberCheck)
+    {
+        int totalCount = this.ItemTotalCount(itemCode);
+        return totalCount >= numberCheck;
+    }
+
+    public virtual int ItemTotalCount(ItemCode itemCode)
+    {
+        int totalCount = 0;
+        foreach(ItemInventory item in this.items)
+        {
+            if (item.itemProfile.itemCode != itemCode) continue;
+            totalCount += item.itemCount;
+        }
+        return totalCount;
+    }
+
     protected virtual bool IsInventoryFull()
     {
         if (this.items.Count >= this.maxSlot) return true;
