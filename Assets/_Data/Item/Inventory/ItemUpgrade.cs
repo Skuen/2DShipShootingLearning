@@ -10,6 +10,9 @@ public class ItemUpgrade : InventoryAbstract
     protected override void Start()
     {
         base.Start();
+        Invoke(nameof(this.Test), 1);
+        Invoke(nameof(this.Test), 2);
+        Invoke(nameof(this.Test), 3);
     }
 
     protected virtual void Test()
@@ -19,9 +22,9 @@ public class ItemUpgrade : InventoryAbstract
 
     public virtual bool UpgradeItem(int itemIndex)
     {
-        if (itemIndex >= this.inventory.Items.Count) return false;
-
         ItemInventory itemInventory = this.inventory.Items[itemIndex];
+
+        if (itemIndex >= this.inventory.Items.Count) return false;
         if (itemInventory.itemCount < 1) return false;
 
         List<ItemRecipe> upgradeLevels = itemInventory.itemProfile.upgradeLevels;
@@ -36,37 +39,23 @@ public class ItemUpgrade : InventoryAbstract
 
     protected virtual void DeductIngredient(List<ItemRecipe> upgradeLevels, int currentLevel)
     {
-        ItemCode itemCode;
-        int itemCount;
-
-        ItemRecipe currentRecipeLevel = upgradeLevels[currentLevel];
-        foreach(ItemRecipeIngredient ingredient in currentRecipeLevel.ingredients)
+        foreach(ItemRecipeIngredient ingredient in upgradeLevels[currentLevel].ingredients)
         {
-            itemCode = ingredient.itemProfile.itemCode;
-            itemCount = ingredient.itemCount;
-
-            this.inventory.DeductItem(itemCode, itemCount);
+            this.inventory.DeductItem(ingredient.itemProfile.itemCode, ingredient.itemCount);
         }
     }
 
     protected virtual bool HaveEnoughIngredients(List<ItemRecipe> upgradeLevels, int currentLevel)
     {
-        ItemCode itemCode;
-        int itemCount;
-
-        if(currentLevel > upgradeLevels.Count)
+        if(currentLevel >= upgradeLevels.Count)
         {
             Debug.LogError("Item can't upgrade anymore, current: " + currentLevel);
             return false;
         }
 
-        ItemRecipe currentRecipeLevel = upgradeLevels[currentLevel];
-        foreach(ItemRecipeIngredient ingredient in currentRecipeLevel.ingredients)
+        foreach(ItemRecipeIngredient ingredient in upgradeLevels[currentLevel].ingredients)
         {
-            itemCode = ingredient.itemProfile.itemCode;
-            itemCount = ingredient.itemCount;
-
-            if (!this.inventory.ItemCheck(itemCode, itemCount)) return false;
+            if (!this.inventory.ItemCheck(ingredient.itemProfile.itemCode, ingredient.itemCount)) return false;
         }
         return true;
     }
