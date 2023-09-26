@@ -8,20 +8,19 @@ public class InventoryDrop : InventoryAbstract
     protected override void Start()
     {
         base.Start();
-        //Invoke(nameof(Test), 5);
+        Invoke(nameof(Test), 5);
     }
     protected virtual void Test()
     {
-        DropItemIndex(0);
+        Vector3 position = transform.position;
+        position.x += 1;
+        DropItemIndex(0, position,transform.rotation);
     }
-    protected virtual void DropItemIndex(int itemIndex)
+    protected virtual void DropItemIndex(int itemIndex, Vector3 position, Quaternion rotation)
     {
         ItemInventory itemInventory = this.inventory.Items[itemIndex];
 
-        Vector3 position = transform.position;
-        position.x += 1;
-
-        ItemDropSpawner.Instance.Drop(itemInventory, position, transform.rotation);
+        ItemDropSpawner.Instance.Drop(itemInventory, position, rotation);
         this.inventory.Items.Remove(itemInventory);
     }
 }

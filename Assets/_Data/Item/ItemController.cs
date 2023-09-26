@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,7 +14,32 @@ public class ItemController : AlphaMonoBehavior
     {
         base.LoadComponents();
         this.LoadItemDespawn();
+        this.LoadItemInventory();
     }
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        this.ResetItem(); 
+    }
+
+    protected virtual void ResetItem()
+    {
+        this.itemInventory.itemCount = 1;
+        this.itemInventory.upgradeLevel = 0;
+    }
+
+    protected virtual void LoadItemInventory()
+    {
+        if (this.itemInventory.itemProfile != null) return;
+        ItemCode itemCode = ItemCodeParser.FromString(transform.name);
+        ItemProfileSO itemProfile = ItemProfileSO.FindByItemCode(itemCode);
+
+        this.itemInventory.itemProfile = itemProfile;
+        this.ResetItem();
+        Debug.Log(transform.name + ": LoadItemInventory", gameObject);
+
+    }
+
     protected virtual void LoadItemDespawn()
     {
         if (this.itemDespawn != null) return;

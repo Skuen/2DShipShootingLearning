@@ -27,7 +27,8 @@ public class Inventory : AlphaMonoBehavior
     public virtual bool AddEquiment(ItemInventory itemInventory)
     {
         if (this.IsInventoryFull()) return false;
-        this.items.Add(itemInventory);
+        ItemInventory item = itemInventory.Clone();
+        this.items.Add(item);
         return true;
     }
 

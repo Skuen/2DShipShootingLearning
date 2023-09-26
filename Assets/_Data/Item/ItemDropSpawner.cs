@@ -33,7 +33,7 @@ public class ItemDropSpawner : Spawner
         itemDrop.gameObject.SetActive(true);
 
         ItemController itemController = itemDrop.GetComponent<ItemController>();
-        itemController.ItemInventory = itemInventory;
+        itemController.ItemInventory = itemInventory.Clone();
         return itemDrop;
     }
 }
