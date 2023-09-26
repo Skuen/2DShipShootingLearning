@@ -31,6 +31,9 @@ public class ItemDropSpawner : Spawner
         Transform itemDrop = this.Spawn(itemInventory.itemProfile.itemCode.ToString(), position, rotation);
         if (itemDrop == null) return null;
         itemDrop.gameObject.SetActive(true);
+
+        ItemController itemController = itemDrop.GetComponent<ItemController>();
+        itemController.ItemInventory = itemInventory;
         return itemDrop;
     }
 }

@@ -8,7 +8,7 @@ public class ItemPickupable : ItemAbtract
     [SerializeField] protected SphereCollider _collider;
     protected virtual void OnMouseDown()
     {
-        Debug.Log(transform.parent.name);
+        //Debug.Log(transform.parent.name);
         PlayerController.Instance.PlayerPickup.ItemPickUp(this);
     }
     protected override void LoadComponents()

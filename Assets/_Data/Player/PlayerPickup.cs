@@ -6,10 +6,8 @@ public class PlayerPickup : PlayerAbstract
 {
     public virtual void ItemPickUp(ItemPickupable itemPickupable)
     {
-        Debug.Log("ItemPickup");
-
-        ItemCode itemCode = itemPickupable.GetItemCode();
-        if (this.playerController.CurrentShip.Inventory.AddItem(itemCode, 1))
+        ItemInventory itemInventory = itemPickupable.ItemController.ItemInventory;
+        if (this.playerController.CurrentShip.Inventory.AddItem(itemInventory))
         {
             itemPickupable.DespawnItem();
         }

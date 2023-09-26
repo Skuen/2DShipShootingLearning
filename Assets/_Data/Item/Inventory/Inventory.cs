@@ -15,6 +15,23 @@ public class Inventory : AlphaMonoBehavior
         this.AddItem(ItemCode.GoldOre, 10);
         this.AddItem(ItemCode.IronOre, 10);
     }
+    public virtual bool AddItem(ItemInventory itemInventory)
+    {
+        ItemProfileSO itemProfile = itemInventory.itemProfile;
+        int addCount = itemInventory.itemCount;
+
+        if (itemProfile.itemType == ItemType.Equipment) return this.AddEquiment(itemInventory);
+
+        return this.AddItem(itemProfile.itemCode,addCount);
+    }
+    public virtual bool AddEquiment(ItemInventory itemInventory)
+    {
+        if (this.IsInventoryFull()) return false;
+        this.items.Add(itemInventory);
+        return true;
+    }
+
+
     public virtual bool AddItem(ItemCode itemCode, int addCount)
     {
 
