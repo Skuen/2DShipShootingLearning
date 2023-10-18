@@ -16,7 +16,7 @@ public class DamageSender : AlphaMonoBehavior
     public virtual void Send(DamageReceiver damageReceiver)
     {
         damageReceiver.Deduct(this.damage);
-        Debug.Log("Deducted");
+        //Debug.Log("Deducted");
     }
     protected virtual void CreateImpactFX()
     {

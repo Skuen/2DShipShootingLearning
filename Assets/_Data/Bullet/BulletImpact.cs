@@ -39,7 +39,7 @@ public class BulletImpact : BulletAbtract
         if (other.transform.parent == this.bulletController.Shooter) return;
 
         this.bulletController.DamageSender.Send(other.transform);
-        Debug.Log("Collided");
+        //Debug.Log("Collided");
     }
     
 }

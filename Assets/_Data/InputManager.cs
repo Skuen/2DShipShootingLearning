@@ -8,9 +8,6 @@ public class InputManager : AlphaMonoBehavior
 
     [SerializeField] public Vector3 mouseWorldPosition;
     [SerializeField] public float onFiring { get; private set; }
-    /// <summary>
-    /// main part
-    /// </summary>
     protected override void Awake()
     {
         base.Awake();
@@ -34,11 +31,6 @@ public class InputManager : AlphaMonoBehavior
         this.GetMouseDown();
     }
 
-    
-
-    /// <summary>
-    /// methods
-    /// </summary>
     protected virtual void GetMousePosition()
     {
         this.mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
