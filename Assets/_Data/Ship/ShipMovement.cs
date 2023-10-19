@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShipMovement : MonoBehaviour
+public class ShipMovement : AlphaMonoBehavior
 {
     [SerializeField] protected Vector3 targetPosition;
     [SerializeField] protected float shipSpeed = 0.01f;
-    private void FixedUpdate()
+    [SerializeField] protected float distance = 0;
+    [SerializeField] protected float minDistance = 1f;
+    protected virtual void FixedUpdate()
     {
-        this.GetTargetPosition();
         this.LookAtTarget();
         this.Moving();
     }
@@ -23,13 +24,11 @@ public class ShipMovement : MonoBehaviour
         transform.parent.rotation= Quaternion.Euler(0, 0, rotation_z);
     }
 
-    protected virtual void GetTargetPosition()
-    {
-        this.targetPosition = InputManager.Instance.mouseWorldPosition;
-        this.targetPosition.z = 0;
-    }
+    
     protected virtual void Moving()
     {
+        this.distance = Vector3.Distance(transform.position, this.targetPosition);
+        if (this.distance < minDistance) return;
         Vector3 newPos = Vector3.Lerp(transform.parent.position, targetPosition, this.shipSpeed);
         transform.parent.position = newPos;
     }

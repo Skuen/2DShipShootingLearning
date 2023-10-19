@@ -27,11 +27,11 @@ public class JunkDamageReceiver : DamageReceiver
     }
     protected virtual void DropItemOnDead()
     {
-        ItemDropSpawner.Instance.Drop(this.junkController.JunkSO.dropList, transform.position, transform.rotation);
+        ItemDropSpawner.Instance.Drop(this.junkController.ShootableObjectSO.dropList, transform.position, transform.rotation);
     }
     public override void Reborn()
     {
-        this.hpMax = this.junkController.JunkSO.hpMax;
+        this.hpMax = this.junkController.ShootableObjectSO.hpMax;
         base.Reborn();
     }
     public virtual void OnDeadFX()

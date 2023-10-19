@@ -9,8 +9,8 @@ public class JunkController : AlphaMonoBehavior
     public Transform Model { get => model; }
     [SerializeField] protected JunkDespawn junkDespawn;
     public JunkDespawn JunkDespawn { get => junkDespawn; }
-    [SerializeField] protected JunkSO junkSO;
-    public JunkSO JunkSO => junkSO; 
+    [SerializeField] protected ShootableObjectSO shootableObjectSO;
+    public ShootableObjectSO ShootableObjectSO => shootableObjectSO; 
     protected override void LoadComponents()
     {
         base.LoadComponents();
@@ -34,9 +34,9 @@ public class JunkController : AlphaMonoBehavior
     }
     protected virtual void LoadJunkSO()
     {
-        if (this.junkSO != null) return;
-        string resourcesPath = "Junk/" + transform.name;
-        this.junkSO = Resources.Load<JunkSO>(resourcesPath);
+        if (this.shootableObjectSO != null) return;
+        string resourcesPath = "ShootableObject/Junk/" + transform.name;
+        this.shootableObjectSO = Resources.Load<ShootableObjectSO>(resourcesPath);
         Debug.Log(transform.name + ": JunkSO", gameObject);
     }
 

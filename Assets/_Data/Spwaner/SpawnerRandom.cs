@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JunkSpawnerRandom : AlphaMonoBehavior
+public class SpawnerRandom : AlphaMonoBehavior
 {
-    [Header("Junk Random")]
-    [SerializeField] protected JunkSpawnerController junkSpawnerController;
-    [SerializeField] protected float randomDelay=1f;
-    [SerializeField] protected float randomTimer=0f;
-    [SerializeField] protected float randomLimit=9f;
+    [Header("Spawner Random")]
+    [SerializeField] protected SpawnerController spawnerController;
+    [SerializeField] protected float randomDelay = 1f;
+    [SerializeField] protected float randomTimer = 0f;
+    [SerializeField] protected float randomLimit = 1f;
 
     #region init
     protected override void LoadComponents()
@@ -19,12 +19,12 @@ public class JunkSpawnerRandom : AlphaMonoBehavior
     //Load dependency
     protected virtual void LoadJunkController()
     {
-        if (this.junkSpawnerController != null) return;
-        this.junkSpawnerController = GetComponent<JunkSpawnerController>();
-        Debug.Log(transform.name + ": LoadJunkController", gameObject);
+        if (this.spawnerController != null) return;
+        this.spawnerController = GetComponent<SpawnerController>();
+        Debug.Log(transform.name + ": LoadController", gameObject);
     }
     #endregion
-   
+
     protected virtual void FixedUpdate()
     {
         this.JunkSpawning();
@@ -38,18 +38,18 @@ public class JunkSpawnerRandom : AlphaMonoBehavior
         if (this.randomTimer < this.randomDelay) return;
         this.randomTimer = 0;
 
-        Transform randomePoint = this.junkSpawnerController.SpawnPoints.GetRandom();
+        Transform randomePoint = this.spawnerController.SpawnPoints.GetRandom();
         Vector3 position = randomePoint.position;
         Quaternion rotation = transform.rotation;
 
 
-        Transform prefab = this.junkSpawnerController.JunkSpawner.RandomPrefab();
-        Transform obj =  this.junkSpawnerController.JunkSpawner.Spawn(prefab, position, rotation);
+        Transform prefab = this.spawnerController.Spawner.RandomPrefab();
+        Transform obj = this.spawnerController.Spawner.Spawn(prefab, position, rotation);
         obj.gameObject.SetActive(true);
     }
     protected virtual bool RandomReachLimit()
     {
-        int currentJunk = this.junkSpawnerController.JunkSpawner.SpawnedCount;
+        int currentJunk = this.spawnerController.Spawner.SpawnedCount;
         return currentJunk >= this.randomLimit;
     }
 }

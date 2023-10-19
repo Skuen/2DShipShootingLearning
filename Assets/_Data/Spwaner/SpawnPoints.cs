@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class SpawnPoints : AlphaMonoBehavior
+public class SpawnPoints : AlphaMonoBehavior
 {
     [SerializeField] protected List<Transform> points;
     protected override void LoadComponents()

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShipShooting : MonoBehaviour
+public abstract class ShipShooting : MonoBehaviour
 {
 
     [SerializeField] protected bool isShooting = false;
@@ -19,33 +19,26 @@ public class ShipShooting : MonoBehaviour
         this.Shooting();
     }
     #endregion
-    private void IsShooting()
+    
+    protected virtual void Shooting()
     {
-        //check input from mouse
-        this.isShooting = InputManager.Instance.onFiring == 1;
-    }
-    private void Shooting()
-    {
-       
-        //check bad condition first
-        if (!this.isShooting) return;
-        //delay shoot
         this.shootTimer += Time.fixedDeltaTime;
+
+        if (!this.isShooting) return;
         if (this.shootTimer < this.shootDelay) return;
-        //reset timer
         this.shootTimer = 0;
-        //get position
-        Vector3 spawnPosition = transform.position;
+
+        Vector3 spawnPos = transform.position;
         Quaternion rotation = transform.parent.rotation;
-        Transform newBullet = BulletSpawner.Instance.Spawn(BulletSpawner.bulletOne,spawnPosition, rotation);
-        //check the bullet we get
+        Transform newBullet = BulletSpawner.Instance.Spawn(BulletSpawner.bulletOne, spawnPos, rotation);
         if (newBullet == null) return;
-        //set the bullet true so we can see it
+
         newBullet.gameObject.SetActive(true);
-        BulletController bulletController = newBullet.GetComponent<BulletController>();
-        bulletController.SetShotter(transform.parent); 
-        //Debug.Log("Rat-ta-ta"); 
+        BulletController bulletCtrl = newBullet.GetComponent<BulletController>();
+        bulletCtrl.SetShotter(transform.parent);
     }
-   
+
+    protected abstract bool IsShooting();
+
 
 }
