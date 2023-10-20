@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class ShipShooting : MonoBehaviour
+public abstract class ObjectShooting : MonoBehaviour
 {
 
     [SerializeField] protected bool isShooting = false;

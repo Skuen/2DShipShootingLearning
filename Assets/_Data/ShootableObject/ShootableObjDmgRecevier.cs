@@ -23,7 +23,7 @@ public class ShootableObjDmgRecevier : DamageReceiver
         this.OnDeadFX();
         this.DropItemOnDead();
         this.shootableObjectController.Despawn.DespawnObject();
-        Debug.Log("Shootable Object destroyed");
+        //Debug.Log("Shootable Object destroyed");
     }
     protected virtual void DropItemOnDead()
     {
