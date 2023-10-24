@@ -14,4 +14,5 @@ public class ShipFollowingMouse : ObjectMovement
         this.targetPosition = InputManager.Instance.mouseWorldPosition;
         this.targetPosition.z = 0;
     }
+
 }

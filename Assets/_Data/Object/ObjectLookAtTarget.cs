@@ -11,6 +11,10 @@ public class ObjectLookAtTarget : AlphaMonoBehavior
         this.LootAtTarget();
     }
 
+    public virtual void SetRotSpeed(float speed)
+    {
+        this.rotSpeed = speed;
+    }
 
     protected virtual void LootAtTarget()
     {
