@@ -1185,7 +1185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPosition: {x: 0, y: 0, z: 0}
-  rotSpeed: 0.1
+  rotSpeed: 0.2
   player: {fileID: 1610965044}
 --- !u!1 &350374569
 GameObject:
