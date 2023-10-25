@@ -110,4 +110,9 @@ public abstract class Spawner : AlphaMonoBehavior
         int rand = Random.Range(0, this.prefabs.Count);
         return this.prefabs[rand];
     }
+
+    public virtual void TranferToHolder(Transform obj)
+    {
+        obj.parent = this.holder;
+    }
 }

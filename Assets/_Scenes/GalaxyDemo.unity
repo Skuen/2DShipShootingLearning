@@ -1005,6 +1005,7 @@ MonoBehaviour:
   shootableObjectSO: {fileID: 11400000, guid: 0a49623535c4d64478e8a119a5a5b467, type: 2}
   objectShooting: {fileID: 1652071408}
   objectLookAtTarget: {fileID: 0}
+  spawner: {fileID: 0}
   spawnPoints: {fileID: 0}
 --- !u!4 &323337886
 Transform:
@@ -1184,7 +1185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPosition: {x: 0, y: 0, z: 0}
-  rotSpeed: 3
+  rotSpeed: 0.1
   player: {fileID: 1610965044}
 --- !u!1 &350374569
 GameObject:
@@ -1302,9 +1303,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1077395151
+  m_SortingLayer: -2
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300002, guid: c568092d7452f4cf9b5a6e629a61dcd2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2310,7 +2311,6 @@ GameObject:
   - component: {fileID: 702628201}
   - component: {fileID: 702628204}
   - component: {fileID: 702628202}
-  - component: {fileID: 702628203}
   m_Layer: 0
   m_Name: EnemySpawner
   m_TagString: Untagged
@@ -2351,22 +2351,6 @@ MonoBehaviour:
   prefabs:
   - {fileID: 707627219}
   poolObjs: []
---- !u!114 &702628203
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 702628200}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3270a3fe82c18c41841757aa6fb0a45, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnerController: {fileID: 702628204}
-  randomDelay: 1
-  randomTimer: 0
-  randomLimit: 10
 --- !u!114 &702628204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2415,6 +2399,7 @@ MonoBehaviour:
   shootableObjectSO: {fileID: 11400000, guid: a9bfd18581e4d474c9ae40fecf0256dc, type: 2}
   objectShooting: {fileID: 276651970}
   objectLookAtTarget: {fileID: 1726915347}
+  spawner: {fileID: 702628202}
   spawnPoints: {fileID: 0}
 --- !u!4 &707627219
 Transform:
@@ -2815,6 +2800,7 @@ MonoBehaviour:
   shootableObjectSO: {fileID: 11400000, guid: fc39bb4b1589add4b83bc8eab99dbba7, type: 2}
   objectShooting: {fileID: 1248525777}
   objectLookAtTarget: {fileID: 347505055}
+  spawner: {fileID: 0}
   spawnPoints: {fileID: 1749842239}
 --- !u!4 &975408138
 Transform:
@@ -3581,9 +3567,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1077395151
+  m_SortingLayer: -2
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300004, guid: c568092d7452f4cf9b5a6e629a61dcd2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -4174,7 +4160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPosition: {x: 0, y: 0, z: 0}
-  shipSpeed: 0
+  shipSpeed: 0.001
   distance: 0
   minDistance: 1
   moveTarget: {fileID: 1086156009}
@@ -4787,7 +4773,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPosition: {x: 0, y: 0, z: 0}
-  rotSpeed: 3
+  rotSpeed: 1
   player: {fileID: 1610965044}
 --- !u!1 &1737048688
 GameObject:
@@ -5231,9 +5217,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1077395151
+  m_SortingLayer: -2
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300006, guid: c568092d7452f4cf9b5a6e629a61dcd2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -5541,6 +5527,8 @@ MonoBehaviour:
   delay: 2
   isRead: 0
   spawner: {fileID: 702628202}
+  minions: []
+  minionLimit: 2
 --- !u!1 &2133585445
 GameObject:
   m_ObjectHideFlags: 0

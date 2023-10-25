@@ -15,6 +15,8 @@ public abstract class ShootableObjectController : AlphaMonoBehavior
     public ObjectShooting ObjectShooting => objectShooting;
     [SerializeField] protected ObjectLookAtTarget objectLookAtTarget;
     public ObjectLookAtTarget ObjectLookAtTarget => objectLookAtTarget;
+    [SerializeField] protected Spawner spawner;
+    public Spawner Spawner => spawner;
 
 
     protected override void LoadComponents()
@@ -25,6 +27,7 @@ public abstract class ShootableObjectController : AlphaMonoBehavior
         this.LoadSO();
         this.LoadObjectShooting();
         this.LoadObjectLookAtTarget();
+        this.LoadSpawner();
     }
 
     protected virtual void LoadModel()
@@ -58,6 +61,12 @@ public abstract class ShootableObjectController : AlphaMonoBehavior
         if (this.objectLookAtTarget != null) return;
         this.objectLookAtTarget = GetComponentInChildren<ObjectLookAtTarget>();
         Debug.Log(transform.name + ": ObjectLookAtTarget", gameObject);
+    }
+    protected virtual void LoadSpawner()
+    {
+        if (this.spawner != null) return;
+        this.spawner = transform.parent?.parent?.GetComponent<Spawner>();
+        Debug.Log(transform.name + ": Spawner", gameObject);
     }
     protected abstract string GetObjectTypeString();
     
